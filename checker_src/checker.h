@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/01 08:20:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/07/01 14:48:36 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ typedef struct	s_diff
 	char		last_b[4];
 }				t_diff;
 
+enum
+{
+	SA = 1,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+	PA,
+	PB
+};
+
 typedef struct	s_info
 {
 	t_list			*a;
@@ -50,6 +65,7 @@ typedef struct	s_info
 	t_diff			*diffs;
 	int				v_mode;
 	int				v_pos;
+	int				last_move;
 }				t_info;
 
 /*

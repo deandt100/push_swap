@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/28 14:15:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/01 08:13:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/07/01 15:00:04 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ typedef struct	s_algo
 	int		valid;
 	t_diff	*diffs;
 }				t_algo;
-
-enum
-{
-	SA = 1,
-	SB,
-	SS,
-	RA,
-	RB,
-	RR,
-	RRA,
-	RRB,
-	RRR,
-	PA,
-	PB
-};
 
 /*
 ** Output functions
