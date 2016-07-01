@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:20:27 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/30 13:24:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/07/01 15:57:15 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	do_best6(t_info *info, int i, int save)
 	if (i == PA)
 	{
 		ft_lstpushpop(&info->b, &info->a);
-		inc_elems(info, 0);
+		inc_elems(info, 1);
 		if (save)
 			ft_lstappend(&info->steps, ft_lstnew(ft_strdup("pa")));
 		ft_strcpy(info->diffs->last_a, "pa");
@@ -25,7 +25,7 @@ void	do_best6(t_info *info, int i, int save)
 	else if (i == PB)
 	{
 		ft_lstpushpop(&info->a, &info->b);
-		inc_elems(info, 1);
+		inc_elems(info, 0);
 		if (save)
 			ft_lstappend(&info->steps, ft_lstnew(ft_strdup("pb")));
 		ft_strcpy(info->diffs->last_b, "pb");

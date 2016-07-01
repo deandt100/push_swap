@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/07/01 08:12:10 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/07/01 16:01:37 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,25 @@ void	run_test2(t_algo *best, t_info *info)
 		|| (w_sort->elem_steps < best->op_count && stack_sorted(w_sort->a)
 		&& w_sort->elem_a == info->max))
 	{
-		if (info->elem_steps < w_sort->elem_steps)
+		if (info->elem_steps < w_sort->elem_steps
+			&& stack_sorted(info->a) && info->elem_a == info->max)
 			print_steps(info->steps);
-		else
+		else if (stack_sorted(w_sort->a) && w_sort->elem_a == info->max)
 			print_steps(w_sort->steps);
+		else
+			print_steps(best->operations);
 	}
 	else
 		print_steps(best->operations);
 	delete_mask(w_sort);
 	delete_mask(info);
+}
+
+void	delete(t_algo *b_sort, t_algo *s_sort, t_algo *d_sort)
+{
+	delete_algo(&b_sort);
+	delete_algo(&s_sort);
+	delete_algo(&d_sort);
 }
 
 void	run_sort_algorithms(t_info *info)
@@ -55,16 +65,16 @@ void	run_sort_algorithms(t_info *info)
 	best = d_sort;
 	bubble_sort(b_sort, info);
 	compress_ops(b_sort->operations, &b_sort->op_count);
-	if (b_sort->op_count < best->op_count && stack_sorted(b_sort->stack_a))
+	if (b_sort->op_count < best->op_count && stack_sorted(b_sort->stack_a)
+		&& b_sort->elem_a == info->max)
 		best = b_sort;
 	split_sort(s_sort, info);
 	compress_ops(s_sort->operations, &s_sort->op_count);
-	if (s_sort->op_count < best->op_count && stack_sorted(s_sort->stack_a))
+	if (s_sort->op_count < best->op_count && stack_sorted(s_sort->stack_a)
+		&& s_sort->elem_a == info->max)
 		best = s_sort;
 	run_test2(best, info);
-	delete_algo(&b_sort);
-	delete_algo(&s_sort);
-	delete_algo(&d_sort);
+	delete(b_sort, s_sort, d_sort);
 }
 
 int		main(int argc, char **argv)
